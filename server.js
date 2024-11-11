@@ -5,6 +5,8 @@
 // new way of importing a module
 import http from "http";
 
+import { generatePercentage } from "./features.js";
+console.log(generatePercentage());
 
 // creating a server using "createServer()" method 
 const server = http.createServer( (req, res)=> {
@@ -22,7 +24,7 @@ const server = http.createServer( (req, res)=> {
         res.end("<h1>Home Page</h1>");
     }
     else if(req.url === "/about"){
-        res.end("<h1>About Page</h1>");  
+        res.end(`<h1>Random Percentage = ${generatePercentage()} </h1>`);  
     }
     else if(req.url === "/contact"){
         res.end("<h1>Contact Page</h1>");
