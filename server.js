@@ -8,6 +8,12 @@ import http from "http";
 import { generatePercentage } from "./features.js";
 console.log(generatePercentage());
 
+
+
+// importing fs module
+import fs from "fs";
+
+
 // creating a server using "createServer()" method 
 const server = http.createServer( (req, res)=> {
    
@@ -20,8 +26,12 @@ const server = http.createServer( (req, res)=> {
     // res.end("Noice");
 
     // creating routes usig req.url method
-    if(req.url === "/") {   
-        res.end("<h1>Home Page</h1>");
+    if(req.url === "/") {
+        
+        // fs.readFile("file", function), when file is read, this function will run
+        fs.readFile("./index.html", (err, home) => {
+            res.end(home);
+        })
     }
     else if(req.url === "/about"){
         res.end(`<h1>Random Percentage = ${generatePercentage()} </h1>`);  
